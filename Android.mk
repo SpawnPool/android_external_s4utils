@@ -1,0 +1,10 @@
+LOCAL_PATH:= $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := s4utils.c
+LOCAL_SHARED_LIBRARIES := libc
+LOCAL_CFLAGS := -DANDROID_CHANGES
+LOCAL_MODULE = s4utils
+LOCAL_MODULE_TAGS := optional
+include $(BUILD_EXECUTABLE)
+
