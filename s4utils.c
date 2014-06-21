@@ -35,6 +35,26 @@ void raext(char *val) {
 	hwset(HW_READAHEAD_EXTERNAL_PATH,val);
 }
 
+void ccat(char *path) {
+	int fd=open(path,O_RDONLY);
+	if(fd<0) {
+		printf("failed to open %s\n",path);
+		exit(1);
+	}
+	struct stat s;
+	fstat(fd,&s);
+	unsigned size=s.st_size;
+	char *buff=malloc(size);
+	if(!buff) {
+		printf("failed to allocate %d buffer for reading %s\n",size,path);
+		exit(1);
+	}
+	read(fd,buff,size);
+	write(1,buff,size);
+	close(fd);
+	free(buff);
+}
+
 #if 0
 
 // UV and OV
@@ -247,6 +267,8 @@ void frimg()
 void vddlevels()
 {
     printf("\nCurrent Voltage Table:\n");
+    ccat("/sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels");
+#if 0
     int c;
     FILE *file;
     file = fopen("/sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels", "r");
@@ -255,6 +277,7 @@ void vddlevels()
        putchar(c);
     fclose(file);
     }
+#endif
 }
 
 // Set CPU Governor
@@ -267,6 +290,8 @@ void setcpugovernor()
 void cpugovernor()
 {
     printf("\nCurrent CPU Governor:\n");
+    ccat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor");
+#if 0
     int c;
     FILE *file;
     file = fopen("/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor", "r");
@@ -275,13 +300,15 @@ void cpugovernor()
        putchar(c);
     fclose(file);
     }
-
+#endif
 }
 
 // Check available CPU Governors
 void cpugovernors()
 {
     printf("\nCurrent available CPU Governors:\n");
+    ccat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors");
+#if 0
     int c;
     FILE *file;
     file = fopen("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors", "r");
@@ -290,12 +317,15 @@ void cpugovernors()
        putchar(c);
     fclose(file);
     }
+#endif
 }
 
 // Check available CPU Frequencies
 void cpufreqs()
 {
     printf("\nCurrent available CPU Frequencies:\n");
+    ccat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies");
+#if 0
     int c;
     FILE *file;
     file = fopen("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies", "r");
@@ -304,13 +334,15 @@ void cpufreqs()
        putchar(c);
     fclose(file);
     }
-
+#endif
 }
 
 // ReadAhead Internal
 void readahead()
 {
   printf( "Cache size of Internal SDCard:\n");
+  ccat(HW_READAHEAD_EXTERNAL_PATH);
+#if 0
             int c2;
             FILE *file2;
             file2 = fopen("/sys/block/mmcblk0/queue/read_ahead_kb", "r");
@@ -319,13 +351,16 @@ void readahead()
                putchar(c2);
           fclose(file2);
           }
+#endif
 }
 
 // ReadAhead External
 void readahead2()
 {
-
+	
  	    printf( "\nCache size of External SDCard:\n");
+ 	    ccat(HW_READAHEAD_EXTERNAL_PATH);
+#if 0
             int c1;
             FILE *file;
             file = fopen("/sys/block/mmcblk0/queue/read_ahead_kb", "r");
@@ -333,8 +368,9 @@ void readahead2()
                while ((c1 = getc(file)) != EOF)
                putchar(c1);
             fclose(file);
-			}
-  }
+            }
+#endif
+ }
 
 
 
@@ -342,6 +378,8 @@ void readahead2()
 void iosched()
 {
     printf("\nCurrent I/O Schedulder:\n");
+    ccat("/sys/block/mmcblk0/queue/scheduler");
+#if 0
     int c;
     FILE *file;
     file = fopen("/sys/block/mmcblk0/queue/scheduler", "r");
@@ -350,6 +388,7 @@ void iosched()
        putchar(c);
     fclose(file);
     }
+#endif
 }
 
 
