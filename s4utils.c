@@ -1,9 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
 
 // S4 Utils v0.2
 // by broodplank
 
+#define HW_VDDLVL_PATH "/sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels"
+#define HW_READAHEAD_INTERNAL_PATH "/sys/block/mmcblk0/queue/read_ahead_kb"
+#define HW_READAHEAD_EXTERNAL_PATH "/sys/block/mmcblk1/queue/read_ahead_kb"
+
+void hwset(char *path,char *val) {
+	int fd=open(path,O_RDWR);
+	if(fd<0) {
+		printf("failed to open %s\n",path);
+		exit(1);
+	}
+	if((write(fd,val,strlen(val))<strlen(val)) {
+		printf("failed to write %s at %s\n",val,fd);
+		exit(1);
+	}
+	close(fd);
+}
+
+
+void vol(char *val) {
+	hwset(HW_VDDLVL_PATH,val);
+}
+
+void raint(char *val) {
+	hwset(HW_READAHEAD_INTERNAL_PATH,val);
+}
+
+void raext(char *val) {
+	hwset(HW_READAHEAD_EXTERNAL_PATH,val);
+}
+
+#if 0
 
 // UV and OV
 void uv25()
@@ -189,6 +221,7 @@ void raext4096()
 
 }
 
+#endif
 
 // Flash boot / recovery
 
@@ -343,17 +376,18 @@ void uvovmenu()
 		    printf( "\nChoice: ");
 		    int uvcount;
 		    scanf ( "%d", &uvcount );
-		    if ( uvcount == 1)
-		       uv25();
+		    if ( ovcount==1)
+		       vol("-25000");
 
-		    if ( uvcount == 2)
-		       uv50();
+		    if ( ovcount==2)
+		       vol("-50000");
 
-		    if ( uvcount == 3)
-		       uv75();
+		    if ( ovcount==3)
+		       vol("-75000");
 
-		    if ( uvcount == 4)
-		       uv100();
+		    if ( ovcount==4)
+		       vol("-100000");
+
 
 	            if ( uvcount == 0)
 		       load_menu();
@@ -371,16 +405,16 @@ void uvovmenu()
 		    int ovcount;
 		    scanf ( "%d", &ovcount );
 		    if ( ovcount==1)
-		       ov25();
+		       vol("+25000");
 
 		    if ( ovcount==2)
-		       ov50();
+		       vol("+50000");
 
 		    if ( ovcount==3)
-		       ov75();
+		       vol("+75000");
 
 		    if ( ovcount==4)
-		       ov100();
+		       vol("+100000");
 
 		    if ( ovcount==0)
 		       load_menu();
@@ -406,26 +440,26 @@ void readaheadint()
 	            printf( " [6] 4096kb\n" );
 	            printf( " [0] Cancel\n" );
 	            printf( "\nChoice: ");
-	            int raint;
-	            scanf ( "%d", &raint );
-	            if ( raint==1)
-	               raint256();
-	            if ( raint==2)
-	               raint512();
+	            int raint2;
+	            scanf ( "%d", &raint2 );
+	            if ( raint2==1)
+	               raint("256");
+	            if ( raint2==2)
+	               raint("512");
 
-	            if ( raint==3)
-	               raint1024();
+	            if ( raint2==3)
+	               raint("1024");
 
-	            if ( raint==4)
-	               raint2048();
+	            if ( raint2==4)
+	               raint("2048");
 
-	            if ( raint==5)
-	               raint3072();
+	            if ( raint2==5)
+	               raint("3072");
 
-	            if ( raint==6)
-	               raint4096();
+	            if ( raint2==6)
+	               raint("4096");
 
-	            if ( raint==0)
+	            if ( raint2==0)
 	            	load_menu();
 
 }
@@ -441,21 +475,21 @@ void readaheadext()
 		printf( " [6] 4096kb\n" );
 		printf( " [0] Cancel\n" );
 		printf( "\nChoice: ");
-		int raext;
-		scanf ( "%d", &raext );
-		if ( raext==1)
-		   raext256();
-		if ( raext==2)
-		   raext512();
-		if ( raext==3)
-		   raext1024();
-		if ( raext==4)
-		   raext2048();
-		if ( raext==5)
-		   raext3072();
-		if ( raext==6)
-		   raext4096();
-		if ( raext==0)
+		int raext2;
+		scanf ( "%d", &raext2 );
+		if ( raext2==1)
+		   raext("256");
+		if ( raext2==2)
+		   raext("512");
+		if ( raext2==3)
+		   raext("1024");
+		if ( raext2==4)
+		   raext("2048");
+		if ( raext2==5)
+		   raext("3072");
+		if ( raext2==6)
+		   raext("4096");
+		if ( raext2==0)
 			load_menu();
 
 }
