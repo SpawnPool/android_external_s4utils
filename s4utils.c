@@ -104,16 +104,6 @@ void cpugovernor()
 {
     printf("\nCurrent CPU Governor:\n");
     ccat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor");
-#if 0
-    int c;
-    FILE *file;
-    file = fopen("/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor", "r");
-    if (file) {
-       while ((c = getc(file)) != EOF)
-       putchar(c);
-    fclose(file);
-    }
-#endif
 }
 
 // Check available CPU Governors
@@ -121,16 +111,6 @@ void cpugovernors()
 {
     printf("\nCurrent available CPU Governors:\n");
     ccat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors");
-#if 0
-    int c;
-    FILE *file;
-    file = fopen("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors", "r");
-    if (file) {
-       while ((c = getc(file)) != EOF)
-       putchar(c);
-    fclose(file);
-    }
-#endif
 }
 
 // Check available CPU Frequencies
@@ -138,16 +118,6 @@ void cpufreqs()
 {
     printf("\nCurrent available CPU Frequencies:\n");
     ccat("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies");
-#if 0
-    int c;
-    FILE *file;
-    file = fopen("/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies", "r");
-    if (file) {
-       while ((c = getc(file)) != EOF)
-       putchar(c);
-    fclose(file);
-    }
-#endif
 }
 
 // ReadAhead Internal
@@ -155,16 +125,6 @@ void readahead()
 {
   printf( "Cache size of Internal SDCard:\n");
   ccat(HW_READAHEAD_EXTERNAL_PATH);
-#if 0
-            int c2;
-            FILE *file2;
-            file2 = fopen("/sys/block/mmcblk0/queue/read_ahead_kb", "r");
-            if (file2) {
-               while ((c2 = getc(file2)) != EOF)
-               putchar(c2);
-          fclose(file2);
-          }
-#endif
 }
 
 // ReadAhead External
@@ -173,16 +133,6 @@ void readahead2()
 	
  	    printf( "\nCache size of External SDCard:\n");
  	    ccat(HW_READAHEAD_EXTERNAL_PATH);
-#if 0
-            int c1;
-            FILE *file;
-            file = fopen("/sys/block/mmcblk0/queue/read_ahead_kb", "r");
-            if (file) {
-               while ((c1 = getc(file)) != EOF)
-               putchar(c1);
-            fclose(file);
-            }
-#endif
  }
 
 
@@ -192,16 +142,6 @@ void iosched()
 {
     printf("\nCurrent I/O Schedulder:\n");
     ccat("/sys/block/mmcblk0/queue/scheduler");
-#if 0
-    int c;
-    FILE *file;
-    file = fopen("/sys/block/mmcblk0/queue/scheduler", "r");
-    if (file) {
-       while ((c = getc(file)) != EOF)
-       putchar(c);
-    fclose(file);
-    }
-#endif
 }
 
 
