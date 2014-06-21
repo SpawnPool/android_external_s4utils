@@ -55,193 +55,6 @@ void ccat(char *path) {
 	free(buff);
 }
 
-#if 0
-
-// UV and OV
-void uv25()
-{
-     printf("\nLowering CPU VDD Voltage by 25mV\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo -25000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels'");
-     system(buf);
-
-}
-
-void ov25()
-{
-     printf("\nIncreasing CPU VDD Voltage by 25mV\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo +25000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels'");
-     system(buf);
-
-}
-
-void uv50()
-{
-     printf("\nLowering CPU VDD Voltage by 50mV\n");
-    char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo -50000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels'");
-     system(buf);
-
-}
-
-void ov50()
-{
-     printf("\nIncreasing CPU VDD Voltage by 50mV\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo +50000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels'");
-     system(buf);
-
-}
-
-void uv75()
-{
-     printf("\nLowering CPU VDD Voltage by 75mV\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo -75000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels'");
-     system(buf);
-
-}
-
-void ov75()
-{
-     printf("\nIncreasing CPU VDD Voltage by 75mV\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo +75000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels'");
-     system(buf);
-
-}
-
-void uv100()
-{
-     printf("\nLowering CPU VDD Voltage by 100mV\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo -100000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels'");
-     system(buf);
-
-}
-
-void ov100()
-{
-     printf("\nIncreasing CPU VDD Voltage by 100mV\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo +100000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels'");
-     system(buf);
-
-}
-
-
-// ReadAhead Cache size of internal and external sdcard
-void raint256()
-{
-     printf("\nChanging Read Ahead Cache size for Internal sdcard to 256kb\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo 256 > /sys/block/mmcblk0/queue/read_ahead_kb'");
-     system(buf);
-
-}
-
-void raext256()
-{
-     printf("\nChanging Read Ahead Cache size for External sdcard to 256kb\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo 256 > /sys/block/mmcblk1/queue/read_ahead_kb'");
-     system(buf);
-
-}
-
-void raint512()
-{
-     printf("\nChanging Read Ahead Cache size for Internal sdcard to 512kb\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo 512 > /sys/block/mmcblk0/queue/read_ahead_kb'");
-     system(buf);
-
-}
-
-void raext512()
-{
-     printf("\nChanging Read Ahead Cache size for External sdcard to 512kb\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo 512 > /sys/block/mmcblk1/queue/read_ahead_kb'");
-     system(buf);
-
-}
-
-void raint1024()
-{
-     printf("\nChanging Read Ahead Cache size for Internal sdcard to 1024kb\n");
-        char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo 1024 > /sys/block/mmcblk0/queue/read_ahead_kb'");
-     system(buf);
-
-}
-
-void raext1024()
-{
-     printf("\nChanging Read Ahead Cache size for External sdcard to 1024kb\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo 1024 > /sys/block/mmcblk1/queue/read_ahead_kb'");
-     system(buf);
-
-}
-
-void raint2048()
-{
-     printf("\nChanging Read Ahead Cache size for Internal sdcard to 2048kb\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo 2048 > /sys/block/mmcblk0/queue/read_ahead_kb'");
-     system(buf);
-
-}
-
-void raext2048()
-{
-     printf("\nChanging Read Ahead Cache size for External sdcard to 2048kb\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo 2048 > /sys/block/mmcblk1/queue/read_ahead_kb'");
-     system(buf);
-
-}
-
-void raint3072()
-{
-     printf("\nChanging Read Ahead Cache size for Internal sdcard to 3072kb\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo 3072 > /sys/block/mmcblk0/queue/read_ahead_kb'");
-     system(buf);
-
-}
-
-void raext3072()
-{
-     printf("\nChanging Read Ahead Cache size for External sdcard to 3072kb\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo 3072 > /sys/block/mmcblk1/queue/read_ahead_kb'");
-     system(buf);
-
-}
-
-
-void raint4096()
-{
-     printf("\nChanging Read Ahead Cache size for Internal sdcard to 4096kb\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo 4096 > /sys/block/mmcblk0/queue/read_ahead_kb'");
-     system(buf);
-
-}
-
-void raext4096()
-{
-     printf("\nChanging Read Ahead Cache size for External sdcard to 4096kb\n");
-     char buf[256];
-     sprintf(buf, "/system/bin/sh -c %s", "'echo 4096 > /sys/block/mmcblk1/queue/read_ahead_kb'");
-     system(buf);
-
-}
-
-#endif
 
 // Flash boot / recovery
 
@@ -398,21 +211,21 @@ void uvovmenu()
 {
     for (;;)
      {
-            printf( "\nUndervolt or Overvolt?\n\n");
-    	    printf( " [1] Undervolt\n" );
-	    printf( " [2] Overvolt\n" );
-	    printf( " [3] Cancel\n");
-            printf( "\nChoice: ");
+            printf( "\nUndervolt or Overvolt?\n\n"
+    	    " [1] Undervolt\n"
+	    " [2] Overvolt\n"
+	    " [3] Cancel\n"
+            "\nChoice: ");
             int uvorov;
             scanf ( "%d", &uvorov );
 	   if ( uvorov==1) {
-	            printf( "\nUndervolt CPU by how many mV?\n\n");
-	            printf( " [1] 25mV\n" );
-		    printf( " [2] 50mV\n" );
-		    printf( " [3] 75mV\n" );
-		    printf( " [4] 100mV\n\n" );
-		    printf( " [0] Cancel\n" ); 
-		    printf( "\nChoice: ");
+	            printf( "\nUndervolt CPU by how many mV?\n\n"
+	            " [1] 25mV\n"
+		    " [2] 50mV\n"
+		    " [3] 75mV\n"
+		    " [4] 100mV\n\n"
+		    " [0] Cancel\n"
+		    "\nChoice: "):
 		    int uvcount;
 		    scanf ( "%d", &uvcount );
 		    if ( ovcount==1)
@@ -434,13 +247,13 @@ void uvovmenu()
 
       else if ( uvorov==2) {
 
-		    printf( "Overvolt by how many mV?\n\n");
-	            printf( " [1] 25mV\n" );
-		    printf( " [2] 50mV\n" );
-		    printf( " [3] 75mV\n" );
-		    printf( " [4] 100mV\n" );
-		    printf( " [0] Cancel\n" ); 
-		    printf( "\nChoice: ");
+		    printf( "Overvolt by how many mV?\n\n"
+	            " [1] 25mV\n"
+		    " [2] 50mV\n"
+		    " [3] 75mV\n"
+		    " [4] 100mV\n"
+		    " [0] Cancel\n"
+		    "\nChoice: ");
 		    int ovcount;
 		    scanf ( "%d", &ovcount );
 		    if ( ovcount==1)
@@ -470,15 +283,15 @@ void uvovmenu()
 
 void readaheadint()
 {
-	 printf( "Cache size of Internal SDCard?\n\n");
-	    	    printf( " [1] 256kb (default)\n" );
-		    printf( " [2] 512kb\n" );
-	            printf( " [3] 1024kb\n" );
-	            printf( " [4] 2048kb\n" );
-	            printf( " [5] 3072kb\n" );
-	            printf( " [6] 4096kb\n" );
-	            printf( " [0] Cancel\n" );
-	            printf( "\nChoice: ");
+	 printf( "Cache size of Internal SDCard?\n\n"
+	    	    " [1] 256kb (default)\n"
+		    " [2] 512kb\n"
+	            " [3] 1024kb\n"
+	            " [4] 2048kb\n"
+	            " [5] 3072kb\n"
+	            " [6] 4096kb\n"
+	            " [0] Cancel\n"
+	            "\nChoice: ");
 	            int raint2;
 	            scanf ( "%d", &raint2 );
 	            if ( raint2==1)
@@ -505,15 +318,15 @@ void readaheadint()
 
 void readaheadext()
 {
-	        printf( "Cache size of External SDCard?\n\n");
-	        printf( " [1] 256kb (default)\n" );
-		printf( " [2] 512kb\n" );
-		printf( " [3] 1024kb\n" );
-		printf( " [4] 2048kb\n" );
-		printf( " [5] 3072kb\n" );
-		printf( " [6] 4096kb\n" );
-		printf( " [0] Cancel\n" );
-		printf( "\nChoice: ");
+	        printf( "Cache size of External SDCard?\n\n"
+	        " [1] 256kb (default)\n"
+		" [2] 512kb\n"
+		" [3] 1024kb\n"
+		" [4] 2048kb\n"
+		" [5] 3072kb\n"
+		" [6] 4096kb\n"
+		" [0] Cancel\n"
+		"\nChoice: ");
 		int raext2;
 		scanf ( "%d", &raext2 );
 		if ( raext2==1)
@@ -550,12 +363,12 @@ void cpumenu()
 {
     for (;;)
      {
-            printf( "What do you want to change?\n\n");
-    	    printf( " [1] CPU Governor\n" );
-	    printf( " [2] CPU Min Freq\n" );
-            printf( " [3] CPU Max Freq\n" );
-            printf( " [0] Exit\n");
-            printf( "\nChoice: ");
+            printf( "What do you want to change?\n\n"
+    	    " [1] CPU Governor\n"
+	    " [2] CPU Min Freq\n"
+            " [3] CPU Max Freq\n"
+            " [0] Exit\n"
+            "\nChoice: ");
             int cpuchoice;
             scanf ( "%d", &cpuchoice );
             if ( cpuchoice==1)
@@ -575,11 +388,11 @@ void readaheadmenu()
 {
     for (;;)
      {
-            printf( "What do you want to change?\n\n");
-    	    printf( " [1] Internal SDCard cache size\n" );
-	    printf( " [2] External SDCard cache size\n" );
-            printf( " [0] Noting\n" );
-            printf( "\nChoice: ");
+            printf( "What do you want to change?\n\n"
+    	    " [1] Internal SDCard cache size\n"
+	    " [2] External SDCard cache size\n"
+            " [0] Noting\n"
+            "\nChoice: ");
             int readaheadchoice;
             scanf ( "%d", &readaheadchoice );
             if ( readaheadchoice==1)
@@ -609,22 +422,22 @@ int choice;
 do
 {
 
-		    printf( "\n - S4 Utils v0.2 (by broodplank)\n\n");
-		    printf( "  ----[ CPU Settings ]----\n");
-		    printf( " [1] Check current CPU frequency/voltage table and governor\n" );
-		    printf( " [2] Undervolt / Overvolt CPU\n" );
-		    printf( " [3] CPU Governor and Min/Max Freq\n\n" );
-		    printf( " ----[ I/O Settings ]----\n");
-		    printf( " [4] Check current readahead and I/O scheduler \n");
-		    printf( " [5] Set Readahead for Internal/External SD\n");
-		    printf( " [6] Set I/O Scheduler\n\n");
-                    printf( " ----[ Install / Restore ]----\n");
-		    printf( " [7] Make current settings persistent\n");
-		    printf( " [8] Restore default settings\n\n");
-		    printf("  ----[ Extra ]----\n");
-		    printf( " [9] Fake Factory Reset\n\n");
-		    printf( " [0] Exit\n\n");
-		    printf( "Selection: " );
+		    printf( "\n - S4 Utils v0.2 (by broodplank)\n\n"
+		    "  ----[ CPU Settings ]----\n"
+		    " [1] Check current CPU frequency/voltage table and governor\n"
+		    " [2] Undervolt / Overvolt CPU\n"
+		    " [3] CPU Governor and Min/Max Freq\n\n"
+		    " ----[ I/O Settings ]----\n"
+		    " [4] Check current readahead and I/O scheduler \n"
+		    " [5] Set Readahead for Internal/External SD\n"
+		    " [6] Set I/O Scheduler\n\n"
+                    " ----[ Install / Restore ]----\n"
+		    " [7] Make current settings persistent\n"
+		    " [8] Restore default settings\n\n"
+		    "  ----[ Extra ]----\n"
+		    " [9] Fake Factory Reset\n\n"
+		    " [0] Exit\n\n"
+		    "Selection: " );
 		    scanf( "%d", &choice );
 		    switch (choice)
 	             {
